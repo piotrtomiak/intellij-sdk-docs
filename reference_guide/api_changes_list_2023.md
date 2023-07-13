@@ -68,10 +68,6 @@ NOTE: Entries not starting with code quotes (`name`) can be added to document no
 
 <include from="tools_gradle_intellij_plugin.md" element-id="gradle_plugin_223_problem"/>
 
-## 2023.3
-
-### IntelliJ Platform 2023.3
-
 ## 2023.2
 
 ### IntelliJ Platform 2023.2
@@ -89,6 +85,23 @@ NOTE: Entries not starting with code quotes (`name`) can be added to document no
 
 `com.intellij.database.dataSource.DataSourceStorageCore$Listener` class renamed to `com.intellij.database.dataSource.DataSourceStorage$Listener`
 : `Core` class removed from hierarchy.
+
+### JavaScript Plugin 2023.2
+
+`com.intellij.lang.javascript.psi.jsdoc.*` API changed
+: JSDoc support has been refactored and PSI tree is more accurate now. JSDoc tag can contain type, namepath and/or description.
+
+`com.intellij.lang.javascript.psi.jsdoc.JSDocTag.getDocCommentData()` method removed
+: use `getNamepath()`, `getDescription()` or `getType()` to access PSI, or `getNamepathText()`, `getDescriptionText()` or `getTypeText()` to get the text
+
+`com.intellij.lang.javascript.psi.jsdoc.JSDocTag.getValue()` method semantics changed and deprecated
+: use `getNamepath()`, `getDescription()` or `getType()` to access PSI, or `getNamepathText()`, `getDescriptionText()` or `getTypeText()` to get the text
+
+`com.intellij.lang.javascript.psi.jsdoc.JSDocTag.getNamepath()` method semantics changed
+: previously namepath PSI element was not always provided
+
+`com.intellij.lang.javascript.psi.jsdoc.JSDocComment.getTags()` method semantics changed
+: method will return only block tags. Inline tags (`JSDocInlineTag`) are now part of `JSDocDescription` PSI element and need to be queried manually.
 
 ## 2023.1
 
